@@ -8,11 +8,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import net.mcpato.empleos.model.Vacante;
+
 
 
 
 @Controller
 public class HomeController {
+
+    @GetMapping("/detalle")
+    public String mostrarDetalle(Model model){
+        Vacante vacante = new Vacante();
+        vacante.setNombre("Ingeniero Comunicaciones");
+        vacante.setDescripcion("");
+        vacante.setSalario(9000.0);
+        vacante.setFecha(new Date());
+
+        model.addAttribute("vacante",vacante);
+        return "detalle";
+    }
     
     @GetMapping("/")
     public String mostrarHome(Model model){
